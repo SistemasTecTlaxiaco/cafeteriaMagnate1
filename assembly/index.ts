@@ -6,46 +6,68 @@ const allproductosIndex = allproductos.length;
 const allclientesIndex = allclientes.length;
 
 // Creates a new instance of a book and stores it on a PersistentVector
-export function Registrar_Event(id_productos: string, nombre: string, descripcion: string, 
+export function Registrar_productos(id_productos: string, nombre: string, descripcion: string, 
     existencias: string, caducidad: string,marca: string, precio: string, ventas:string): productos {
-    const nuevoproductos = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca, precio );
+    const nuevoproductos =new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
     allproductos.push(nuevoproductos);
-    logging.log('Nuevo producto publicado: ' + newproductosUpload.nombre)
-    addclient();
-    return newproductosUpload;
+    logging.log('Nuevo producto regsitrado: ' + nuevoproductos.nombre)
+   // addclient();
+    return nuevoproductos;
 }
 
 // Returns all books on the PersistentVector
-export function getproducts(): productos[] {
-    const data = new Array<productos>(allproductsIndex);
-    for(let i = 0; i < allproductsIndex; i++) {
-        data[i] = allproducts[i]
+export function Buscar_productos(nombre:string): productos[] {
+    const productosencontrados = new Array<productos>();
+    for(let i = 0; i < allproductos.length; i++) {
+        if (allproductos[i].nombre == nombre) {
+            productosencontrados.push(allproductos[i]);
     }
-    return data;
+    return productosencontrados;
+}
 }
 
+
 // Returns a single book (if exists)
-export function getproductos(productosIndex: i32): productos {
-    if(allproducts.length < productosIndex) {
-        logging.log('El producto no esxiste')
+export function Actualizar_productos(id_productos: string, nombre: string, descripcion: string, existencias: string, 
+    caducidad: string, marca: string, precio: string, ventas:string): productos | null  {
+    for (let i = 0; i < allproductos.length; i++) {
+    if(allproductos[i].id_productos ==id_productos) {
+        allproductos.swap_remove(i);
+        const nuevoproductos = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
+        allproductos.push(nuevoproductos);
+        logging.log('producto actualizado: ' + allproductos[i].nombre);
+        return allproductos[i];
+       }
     }
-    return allproducts[productosIndex]
+    logging.log('producto no encontrado');
+    return null;
+}
+export function Eliminar_productos(id_productos: string): boolean {
+    for (let i = 0; i < allproductos.length; i++) {
+      if (allproductos[i].id_productos == id_productos) {
+        allproductos.swap_remove(i);
+        logging.log('producto eliminado');
+        return true;
+      }
+    }
+    logging.log('El producto no existe');
+    return false;
 }
 
 // Used to validate testing for deleteBooks function
-export function productsLen(): number {
-    return allproducts.length;
-}
+//export function productsLen(): number {
+    //return allproducts.length;
+//}
 
 // Empties the PersistentVector in charge of storing all books
-export function deleteproducts(): void {
+/*export function deleteproducts(): void {
     while(allproducts.length > 0) {
         allproducts.pop();
     }
 }
-
+*/
 // Deletes a book (if exists) based on its position on the Book PersistentVector
-export function deleteproductos(productosIndex: i32): bool {
+/*export function deleteproductos(productosIndex: i32): bool {
     if(allproducts.length < productosIndex) {
         logging.log('El producto no existe')
         return false
@@ -53,10 +75,87 @@ export function deleteproductos(productosIndex: i32): bool {
     allproducts.swap_remove(productosIndex);
     logging.log('El producto ha sido eliminado!');
     return true
+}*/
+export function Registrar_cliente(id_clintes:string,nombre:string,apellidos:string,cuenta:string,
+    direccion:string,telefono:string,wallet:string): cliente {
+    const nuevocliente = new cliente(id_clintes,nombre,apellidos,cuenta,direccion,
+    telefono,wallet);
+    allclientes.push(nuevocliente);
+    logging.log('Nuevo cliente registrado: ' + nuevocliente.nombre +' '+nuevocliente.apellidos);
+    /*if (Proveedor == true){
+        addProveedors();
+    }
+    if (Cliente == true){
+        addClients();
+    }*/
+    
+    return nuevocliente;
+}
+export function Buscar_cliente(nombre: string): cliente[] {
+    const clientesEncontrados = new Array<cliente>();
+    for (let i = 0; i < allclientes.length; i++) {
+        if (allclientes[i].nombre == nombre) {
+            clientesEncontrados.push(allclientes[i]);
+        }
+    }
+    return clientesEncontrados;
 }
 
+export function Actualizar_clientes(id_clintes:string,nombre:string,apellidos:string,cuenta:string,
+    direccion:string,telefono:string,wallet:string): cliente | null{
+    for (let i = 0; i < allclientes.length; i++) {
+        if (allclientes[i].nombre == nombre) {
+            allclientes.swap_remove(i);
+          const nuevocliente = new cliente(id_clintes,nombre,apellidos,
+            cuenta,direccion,telefono,wallet);
+          allclientes.push(nuevocliente);
+          logging.log('cliente actualizado: ' + allclientes[i].nombre);
+          return allclientes[i];
+        }
+      }
+      logging.log('cliente no encontrado');
+      return null;
+}
+
+export function Eliminar_cliente(nombre: string): boolean {
+    for (let i = 0; i < allclientes.length; i++) {
+      if (allclientes[i].nombre == nombre) {
+        allclientes.swap_remove(i);
+        logging.log('cliente eliminado');
+        return true;
+      }
+    }
+    logging.log('El cliente no existe');
+    return false;
+  }
+
+  export function Identificar_cliente (nombre: string): boolean {
+        for (let i = 0; i < allclientes.length; i++) {
+          if (allclientes[i].nombre === nombre) {
+            logging.log('cliente identificado');
+            return true;
+          }
+        }
+        logging.log('El cliente no existe');
+        return false;
+      }
+
+      export function Cancelar_producto(id_productos:string ): boolean {
+        for (let i = 0; i < allproductos.length; i++) {
+          if (allproductos[i].id_productos == id_productos) {
+              allproductos.swap_remove(i)
+            // Realizar la lógica de cancelación del evento aquí
+            // ...
+      
+            logging.log('producto cancelado');
+            return true;
+          }
+        }
+        logging.log('El producto no existe');
+        return false;
+      }
 // Lets a user change the ownership of a book in case its required
-export function changeproductosOwner(productosIndex: i32): bool {
+/*export function changeproductosOwner(productosIndex: i32): bool {
     if(allproducts.length < productosIndex) {
          logging.log('El servicio no existe!')
          return false;
@@ -160,4 +259,4 @@ export function makeDonation(productosOwnerIndex: i32): bool {
 export function donateToProject(): void {
     assert(context.attachedDeposit > ONE_NEAR, 'You need to deposit some NEAR.')
     logging.log('Gracias por su contribucion')
-}
+*/
