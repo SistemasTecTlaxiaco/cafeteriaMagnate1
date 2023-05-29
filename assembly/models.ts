@@ -8,19 +8,19 @@ export class productos {
   caducidad: string;
   marca: string;
   precio: string;
-
   ventas: string;
 
-  constructor(id_productos: string, nombre: string,decripcion: string, existencias: string, caducidad: string, marca: string, ventas: string) {
+  constructor(id_productos: string, nombre: string, descripcion: string, existencias: string, 
+    caducidad: string, marca: string,precio:string, ventas: string) {
+    
     this.id_productos = id_productos;
     this.nombre = nombre;
-    this.descripcion = this.descripcion;
+    this.descripcion = descripcion;
     this.existencias = existencias;
     this.caducidad = caducidad;
     this.marca = marca;
-    this.precio = this.precio;
-
-    this.ventas = ventas;
+    this.precio = precio;
+    this.ventas=ventas;
   }
 }
 
@@ -32,22 +32,22 @@ export class cliente {
   cuenta:string;
   direccion:string;
   telefono:string;
-
   wallet:string;
 
-    constructor(id_clintes:string,nombre:string,apellidos:string,cuenta:string,direccion:string,telefono:string,
-      wallet:string) {
+    constructor(id_clintes:string,nombre:string,apellidos:string,cuenta:string,direccion:string,
+      telefono:string,wallet:string) {
         this.id_cliente =id_clintes;
         this.nombre=nombre;
         this.apellidos=apellidos;
         this.cuenta=cuenta;
         this.direccion=direccion;
         this.telefono=telefono;
-
-        this.wallet=wallet;
+        this.wallet = context.sender;
     }
 }
 
-export const allproducts = new PersistentVector<productos>("productos")
-export const allclient = new PersistentVector<cliente>("cliente")
+export const allproductos = new PersistentVector<productos>('productos');
+export const allclientes = new PersistentVector<cliente>('cliente');
+//export const allProveedors = new PersistentVector<Proveedors>("proveedores")
+//export const allClients = new PersistentVector<Clients>("clientes")
 export const ONE_NEAR = u128.from('10000000000000000')

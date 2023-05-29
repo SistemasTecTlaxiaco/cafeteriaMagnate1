@@ -1,17 +1,15 @@
 import { context, logging, ContractPromiseBatch, u128 } from 'near-sdk-as';
-import { productos, allproducts, cliente, allclient, ONE_NEAR } from './models'
+import { productos, allproductos, cliente, allclientes, ONE_NEAR } from './models'
 
 const contractOwner = context.sender;
-const allproductsIndex = allproducts.length;
-const allclientIndex = allclient.length;
+const allproductosIndex = allproductos.length;
+const allclientesIndex = allclientes.length;
 
 // Creates a new instance of a book and stores it on a PersistentVector
-export function uploaproducts(id_productos: string, nombre: string, descripcion: string, 
+export function Registrar_Event(id_productos: string, nombre: string, descripcion: string, 
     existencias: string, caducidad: string,marca: string, precio: string, ventas:string): productos {
-
-    const newproductosUpload = new productos(id_productos, nombre, descripcion, existencias,
-        caducidad, marca, precio,);
-    allproducts.push(newproductosUpload);
+    const nuevoproductos = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca, precio );
+    allproductos.push(nuevoproductos);
     logging.log('Nuevo producto publicado: ' + newproductosUpload.nombre)
     addclient();
     return newproductosUpload;
