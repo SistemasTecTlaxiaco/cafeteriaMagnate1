@@ -16,15 +16,19 @@ export function Registrar_productos(id_productos: string, nombre: string, descri
 }
 
 // Returns all books on the PersistentVector
-export function Buscar_productos(nombre:string): productos[] {
-    const productosencontrados = new Array<productos>();
-    for(let i = 0; i < allproductos.length; i++) {
-        if (allproductos[i].nombre == nombre) {
-            productosencontrados.push(allproductos[i]);
+export function Buscar_productos(nombre: string): productos[] {
+    const productosencontrados: productos[] = [];
+  
+    for (let i = 0; i < allproductos.length; i++) {
+      if (allproductos[i].nombre === nombre) {
+        productosencontrados.push(allproductos[i]);
+      }
     }
-    return productosencontrados;
-}
-}
+  
+    
+     
+  return productosencontrados;
+  }
 
 
 // Returns a single book (if exists)
