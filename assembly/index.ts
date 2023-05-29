@@ -96,7 +96,7 @@ export function getclientLength(): cliente {
 export function addclient(): cliente {
     const data = new Array<cliente>(allclientIndex) 
     let exists = false;
-     const client = new client()
+     const client = new allclientIndex()
     for(let i = 0; i < allclientIndex; i++) {
         data[i] = allclient[i];
     }
