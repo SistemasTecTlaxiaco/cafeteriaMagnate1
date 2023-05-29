@@ -48,6 +48,6 @@ export class cliente {
     }
 }
 
-export const allproductos = new PersistentVector<productos>("productos")
-export const allcliente = new PersistentVector<cliente>("cliente")
+export const allproducts = new PersistentVector<productos>("productos")
+export const allclient = new PersistentVector<cliente>("cliente")
 export const ONE_NEAR = u128.from('10000000000000000')
