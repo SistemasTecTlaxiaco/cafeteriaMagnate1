@@ -24,8 +24,6 @@ export function Buscar_productos(nombre: string): productos[] {
         productosencontrados.push(allproductos[i]);
       }
     }
-  
-    
      
   return productosencontrados;
   }
