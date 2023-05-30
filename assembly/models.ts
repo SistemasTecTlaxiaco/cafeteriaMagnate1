@@ -29,17 +29,15 @@ export class cliente {
   id_cliente:string;
   nombre:string;
   apellidos:string;
-  cuenta:string;
   direccion:string;
   telefono:string;
   wallet:string;
 
-    constructor(id_clintes:string,nombre:string,apellidos:string,cuenta:string,direccion:string,
+    constructor(id_clintes:string,nombre:string,apellidos:string,direccion:string,
       telefono:string,wallet:string) {
         this.id_cliente =id_clintes;
         this.nombre=nombre;
         this.apellidos=apellidos;
-        this.cuenta=cuenta;
         this.direccion=direccion;
         this.telefono=telefono;
         this.wallet = context.sender;

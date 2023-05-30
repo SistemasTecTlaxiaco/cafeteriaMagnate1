@@ -78,9 +78,9 @@ export function Eliminar_productos(id_productos: string): boolean {
     logging.log('El producto ha sido eliminado!');
     return true
 }*/
-export function Registrar_cliente(id_clintes:string,nombre:string,apellidos:string,cuenta:string,
+export function Registrar_clientes(id_clintes:string,nombre:string,apellidos:string,
     direccion:string,telefono:string,wallet:string): cliente {
-    const nuevocliente = new cliente(id_clintes,nombre,apellidos,cuenta,direccion,
+    const nuevocliente = new cliente(id_clintes,nombre,apellidos,direccion,
     telefono,wallet);
     allclientes.push(nuevocliente);
     logging.log('Nuevo cliente registrado: ' + nuevocliente.nombre +' '+nuevocliente.apellidos);
@@ -103,13 +103,12 @@ export function Buscar_cliente(nombre: string): cliente[] {
     return clientesEncontrados;
 }
 
-export function Actualizar_clientes(id_clintes:string,nombre:string,apellidos:string,cuenta:string,
+export function Actualizar_clientes(id_clintes:string,nombre:string,apellidos:string,
     direccion:string,telefono:string,wallet:string): cliente | null{
     for (let i = 0; i < allclientes.length; i++) {
         if (allclientes[i].nombre == nombre) {
             allclientes.swap_remove(i);
-          const nuevocliente = new cliente(id_clintes,nombre,apellidos,
-            cuenta,direccion,telefono,wallet);
+          const nuevocliente = new cliente(id_clintes,nombre,apellidos,direccion,telefono,wallet);
           allclientes.push(nuevocliente);
           logging.log('cliente actualizado: ' + allclientes[i].nombre);
           return allclientes[i];
