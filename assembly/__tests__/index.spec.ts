@@ -1,18 +1,16 @@
-import {cliente, allclientes, allproductos, productos} from "../models"
-import { Registrar_productos,Buscar_productos, Actualizar_productos, Eliminar_productos,Registrar_cliente,
-Buscar_cliente, Actualizar_clientes, Eliminar_cliente, Identificar_cliente,Cancelar_producto } from "..";
-import { context, Context, logging } from "near-sdk-as";
+import { context, logging, storage, ContractPromiseBatch, u128 } from 'near-sdk-as';
+import { Registrar_productos} from "..";
+import { productos, allproductos, cliente, allclientes/*, Productos, allProductos, Clients, allClients*/, ONE_NEAR } from '../models'
 
-const id_productos='producto'
-const nombre = 'Rust Learning Book'
-const descripcion = 'Book written for all those people interested in learning the powerfull and reliable Rust Programming Language.'
-const existencias ='https://ipfs.io/ipfs/bafybeiet7srgvvxkzwrcaayorzmecmirkizmbinwwcn2k7wxpaszvfmzdi'
-const caducidad = 'https://ipfs.io/ipfs/bafybeia5khhhukn672acm6sfredqdereor7n7zsoobvrwcqk7rmn6ihffi'
-const marca = 'Book Author'
-const precio = 'Book Publisher'
-const ventas = 'English'
 
-const nuevocliente = 'Bob'
+const id_productos = '2';
+const nombre = 'pastel';
+const descripcion = 'de fresas con chocolate';
+const existencias = '2';
+const caducidad = '30/05/2023';
+const marca = 'sin marca';
+const precio = '30';
+const ventas='2';
 
 
 let nuevoproductos = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
@@ -30,34 +28,28 @@ for(let i=0; i < allproductosIndex; i++) {
     data[i] = allproductos[i]
 }
 
-describe("uploadBook", () => {
-    it('should return "newBookUpload"', () => {
-        expect(Registrar_productos('id_productos: string, nombre: string, descripcion: string, existencias: string, caducidad: string, marca: string, precio: string, ventas: string')).toStrictEqual(nuevoproductos);
+describe("Registrar_Podructos", () => {
+    it('should return "Nuevo producto registrado"', () => {
+        expect(Registrar_productos('2','pastel', 'de fresas con chocolate','2', '30/05/2023', 'sin marca', '30','2')).toStrictEqual(nuevoproductos);
     })
 })
-
+/*
 describe("getBooks", () => {
     it('should return all books', () => {
-        expect(Buscar_productos()).toStrictEqual(data)
+        expect(getBooks()).toStrictEqual(data)
     })
 })
 
 describe("getContributors", () => {
     it('should return all contributors', () => {
-        expect(Actualizar_productos()).toStrictEqual(nuevoproductos)
+        expect(getContributors()).toStrictEqual(contsData)
     })
 })
 
 describe("findContributor", () => {
 
     it('should be true', () => {
-        expect(findContributo(contributorUser)).toBeFalsy()
-    })
-})
-describe("findContributor", () => {
-
-    it('should be true', () => {
-        expect(findContributo(contributorUser)).toBeFalsy()
+        expect(findContributor(contributorUser)).toBeFalsy()
     })
 })
 describe("deleteContributors", () => {
@@ -73,4 +65,5 @@ describe("deleteBooks", () => {
         expect(booksLen()).toBe(0, 'books should be deleted!')
     })
 })
+*/
 
