@@ -26,16 +26,16 @@ export class productos {
 
 @nearBindgen
 export class cliente {
-  id_cliente:string;
+  id_clientes:string;
   nombre:string;
   apellidos:string;
   direccion:string;
   telefono:string;
   wallet:string;
 
-    constructor(id_clintes:string,nombre:string,apellidos:string,direccion:string,
+    constructor(id_clientes:string,nombre:string,apellidos:string,direccion:string,
       telefono:string,wallet:string) {
-        this.id_cliente =id_clintes;
+        this.id_clientes =id_clientes;
         this.nombre=nombre;
         this.apellidos=apellidos;
         this.direccion=direccion;
