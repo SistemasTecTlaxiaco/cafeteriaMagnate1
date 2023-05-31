@@ -78,7 +78,7 @@ export function Eliminar_productos(id_productos: string): boolean {
     logging.log('El producto ha sido eliminado!');
     return true
 }*/
-export function Registrar_cliente(id_clientes:string,nombre:string,apellidos:string,
+export function Registrar_clientes(id_clientes:string,nombre:string,apellidos:string,
     direccion:string,telefono:string,wallet:string): cliente {
     const nuevocliente = new cliente(id_clientes,nombre,apellidos,direccion,
     telefono,wallet);
