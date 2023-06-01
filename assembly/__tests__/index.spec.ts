@@ -34,9 +34,9 @@ describe("Registrar_Podructos", () => {
     })
 })
 /*
-describe("getBooks", () => {
-    it('should return all books', () => {
-        expect(getBooks()).toStrictEqual(data)
+describe("Buscar_productos", () => {
+    it('should return "Producto"', () => {
+        expect(Buscar_productos('2','pastel', 'de fresas con chocolate','2', '30/05/2023', 'sin marca', '30','2')).toStrictEqual(productos);
     })
 })
 
