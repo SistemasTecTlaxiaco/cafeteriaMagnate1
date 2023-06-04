@@ -1,5 +1,5 @@
 import { context, logging, storage, ContractPromiseBatch, u128 } from 'near-sdk-as';
-import { Registrar_productos} from "..";
+import { Registrar_productos,Buscar_productos,Actualizar_productos} from "..";
 import { productos, allproductos, cliente, allclientes/*, Productos, allProductos, Clients, allClients*/, ONE_NEAR } from '../models'
 
 
@@ -33,19 +33,21 @@ describe("Registrar_Podructos", () => {
         expect(Registrar_productos('2','pastel', 'de fresas con chocolate','2', '30/05/2023', 'sin marca', '30','2')).toStrictEqual(nuevoproductos);
     })
 })
-/*
+
 describe("Buscar_productos", () => {
     it('should return "Producto"', () => {
-        expect(Buscar_productos('2','pastel', 'de fresas con chocolate','2', '30/05/2023', 'sin marca', '30','2')).toStrictEqual(productos);
+    const productosencontrados: productos[] = [];
+    expect(Buscar_productos('pastel')).toStrictEqual(productosencontrados);
     })
 })
 
-describe("getContributors", () => {
-    it('should return all contributors', () => {
-        expect(getContributors()).toStrictEqual(contsData)
+describe("Actualizar_Productos", () => {
+    it('producto actualizado', () => {
+        const productosactualizado = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
+        expect(Actualizar_productos('2','pastel', 'de fresas con chocolate','2', '30/05/2023', 'sin marca', '30','2')).toStrictEqual(productosactualizado)
     })
 })
-
+/*
 describe("findContributor", () => {
 
     it('should be true', () => {

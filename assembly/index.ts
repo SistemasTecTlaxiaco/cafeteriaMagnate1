@@ -35,8 +35,8 @@ export function Actualizar_productos(id_productos: string, nombre: string, descr
     for (let i = 0; i < allproductos.length; i++) {
     if(allproductos[i].id_productos ==id_productos) {
         allproductos.swap_remove(i);
-        const nuevoproductos = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
-        allproductos.push(nuevoproductos);
+        const productosactualizado = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
+        allproductos.push(productosactualizado);
         logging.log('producto actualizado: ' + allproductos[i].nombre);
         return allproductos[i];
        }
