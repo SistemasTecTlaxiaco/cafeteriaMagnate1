@@ -2,7 +2,7 @@ import { context, PersistentVector, u128 } from "near-sdk-as";
 @nearBindgen
 export class productos {
   id_productos: string;
-  nombre: string;
+  nombrep: string;
   descripcion: string;
   existencias: string;
   caducidad: string;
@@ -10,11 +10,11 @@ export class productos {
   precio: string;
   ventas: string;
 
-  constructor(id_productos: string, nombre: string, descripcion: string, existencias: string, 
+  constructor(id_productos: string, nombrep: string, descripcion: string, existencias: string, 
     caducidad: string, marca: string,precio:string, ventas: string) {
     
     this.id_productos = id_productos;
-    this.nombre = nombre;
+    this.nombrep = nombrep;
     this.descripcion = descripcion;
     this.existencias = existencias;
     this.caducidad = caducidad;

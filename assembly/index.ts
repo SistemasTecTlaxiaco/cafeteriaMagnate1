@@ -6,21 +6,21 @@ const allproductosIndex = allproductos.length;
 const allclientesIndex = allclientes.length;
 
 // Creates a new instance of a book and stores it on a PersistentVector
-export function Registrar_productos(id_productos: string, nombre: string, descripcion: string, 
+export function Registrar_productos(id_productos: string, nombrep: string, descripcion: string, 
     existencias: string, caducidad: string,marca: string, precio: string, ventas:string): productos {
-    const nuevoproductos =new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
+    const nuevoproductos =new productos(id_productos, nombrep, descripcion, existencias,caducidad, marca,precio, ventas);
     allproductos.push(nuevoproductos);
-    logging.log('Nuevo producto regsitrado: ' + nuevoproductos.nombre)
+    logging.log('Nuevo producto regsitrado: ' + nuevoproductos.nombrep)
    // addclient();
     return nuevoproductos;
 }
 
 // Returns all books on the PersistentVector
-export function Buscar_productos(nombre: string): productos[] {
+export function Buscar_productos(nombrep: string): productos[] {
     const productosencontrados: productos[] = [];
   
     for (let i = 0; i < allproductos.length; i++) {
-      if (allproductos[i].nombre === nombre) {
+      if (allproductos[i].nombrep === nombrep) {
         productosencontrados.push(allproductos[i]);
       }
     }
@@ -30,14 +30,14 @@ export function Buscar_productos(nombre: string): productos[] {
 
 
 // Returns a single book (if exists)
-export function Actualizar_productos(id_productos: string, nombre: string, descripcion: string, existencias: string, 
+export function Actualizar_productos(id_productos: string, nombrep: string, descripcion: string, existencias: string, 
     caducidad: string, marca: string, precio: string, ventas:string): productos | null  {
     for (let i = 0; i < allproductos.length; i++) {
     if(allproductos[i].id_productos ==id_productos) {
         allproductos.swap_remove(i);
-        const productosactualizado = new productos(id_productos, nombre, descripcion, existencias,caducidad, marca,precio, ventas);
+        const productosactualizado = new productos(id_productos, nombrep, descripcion, existencias,caducidad, marca,precio, ventas);
         allproductos.push(productosactualizado);
-        logging.log('producto actualizado: ' + allproductos[i].nombre);
+        logging.log('producto actualizado: ' + allproductos[i].nombrep);
         return allproductos[i];
        }
     }
@@ -108,8 +108,8 @@ export function Actualizar_clientes(id_clientes:string,nombre:string,apellidos:s
     for (let i = 0; i < allclientes.length; i++) {
         if (allclientes[i].nombre == nombre) {
             allclientes.swap_remove(i);
-          const nuevocliente = new cliente(id_clientes,nombre,apellidos,direccion,telefono,wallet);
-          allclientes.push(nuevocliente);
+          const clienteactualizado = new cliente(id_clientes,nombre,apellidos,direccion,telefono,wallet);
+          allclientes.push(clienteactualizado);
           logging.log('cliente actualizado: ' + allclientes[i].nombre);
           return allclientes[i];
         }
