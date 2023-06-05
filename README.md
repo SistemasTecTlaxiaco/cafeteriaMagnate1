@@ -1,4 +1,4 @@
-# Bienvenido a OpenBooks 📖
+# Bienvenido a Cafeteria MAGANATE
 ---
 OpenBooks es un smart contract que parte de la idea de que todo el conocimiento y la información debe ser libre para todos. Este proyecto permite a los usuarios publicar documentos, libros, etc. en un ambiente completamente descentralizado y así permitir a otros usuarios obtener los recursos facilmente sin tener que visitar cientos de páginas diferentes hasta conseguir el recurso que buscaban.
 Las funcionalidades principales del contrato son las siguientes:
@@ -22,7 +22,7 @@ Las funcionalidades principales del contrato son las siguientes:
 
 Ya tenemos todo lo que necesitamos para probar nuestro contrato inteligente. Ahora vamos a ejecutarlo.
 
-## Instalación 📖🐱‍💻
+## Instalación CAFETERIA
 ---
 1. Clone el repositorio ```git clone git@github.com:sebasvivas1/OpenBooks.git && cd OpenBooks```
 2. Vamos a iniciar sesión en nuestra wallet que creamos anteriormente: ```near login```
@@ -62,7 +62,7 @@ Algunos de los metodos que podemos ejecutar son los siguientes
   near call dev-<tu numero de contrato> findContributor '{"contributorUser": "usuario.testnet"}' --accountId <tu_user.testnet>
     ```
 
-## Mockup de Figma 🎨📖
+## Mockup de Figma CAFETERIA
 Abre este [enlace](https://www.figma.com/file/3NKKf6JKrRXON8Q7yoFX1N/OpenBooks?node-id=0%3A1) para abrir la propuesta de diseño de la Dapp.
 
 ## Authors
