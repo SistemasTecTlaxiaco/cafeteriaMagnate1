@@ -1,15 +1,14 @@
 # Bienvenido a Cafeteria MAGANATE
 ---
-OpenBooks es un smart contract que parte de la idea de que todo el conocimiento y la información debe ser libre para todos. Este proyecto permite a los usuarios publicar documentos, libros, etc. en un ambiente completamente descentralizado y así permitir a otros usuarios obtener los recursos facilmente sin tener que visitar cientos de páginas diferentes hasta conseguir el recurso que buscaban.
+CAFETERIA MAGANATE es un smart contract que parte de la idea de que todo el conocimiento y la información debe ser libre para todos. Este proyecto permite registrar clientes, buscar,actualizar,eliminar, asi como con los productos, etc. en un ambiente completamente descentralizado y así permitir a otros usuarios obtener los recursos facilmente sin tener que visitar cientos de páginas diferentes hasta conseguir el recurso que buscaban.
 Las funcionalidades principales del contrato son las siguientes:
-* Subir un libro (además, guarda el usuario de la persona que lo sube como "Contribuyente").
-* Obtener todos los libros.
-* Obtener un libro en específico.
-* Obtener lista de contribuyentes.
-* Eliminar la lista de libros.
-* Eliminar un libro en específico.
-* Vaciar la lista de contribuyentes.
-* Buscar un contribuyente por su usuario.
+* Registar cliente (además, guarda el usuario de la persona que lo sube como "Cliente").
+* regsitrar cliente.
+* Buscar algun cliente en especifico .
+* Eliminar un cliente.
+* Eliminar un producto.
+* cancelar producto final.
+* Buscara un producto en especifico.
 
 ## Cómo utilizar este contrato ❔
 ---
@@ -24,47 +23,60 @@ Ya tenemos todo lo que necesitamos para probar nuestro contrato inteligente. Aho
 
 ## Instalación CAFETERIA
 ---
-1. Clone el repositorio ```git clone git@github.com:sebasvivas1/OpenBooks.git && cd OpenBooks```
-2. Vamos a iniciar sesión en nuestra wallet que creamos anteriormente: ```near login```
-3. Dentro del repositorio, instalemos las dependencias del proyecto ejecutando ```npm install```, tranquilo, esto puede tomar unos segundos.
-4. Si quieres desplegar el contrato y probar sus funciones, puedes hacerlo con ```yarn deploy:dev``` esto le devolverá un conjunto de caracteres que empezarán por "dev-" seguido por numeros generados por la red. Guárdelo, lo necesitará si quiere probar los métodos del contrato inteligente.
-5. Por último, si queremos ejecutar los tests desarrollados, podemos hacerlo ejecutando ```yarn test```
+1. Clone el repositorio ```git clone git@github.com:SistemasTecTlaxiaco/cafeteriaMagnate1.git && cd CafeteriaMaganate1```
+3. Vamos a iniciar sesión en nuestra wallet que creamos anteriormente: ```near login```
+4. Dentro del repositorio, instalemos las dependencias del proyecto ejecutando ```npm install```, tranquilo, esto puede tomar unos segundos.
+5. Si quieres desplegar el contrato y probar sus funciones, puedes hacerlo con ```yarn deploy:dev``` esto le devolverá un conjunto de caracteres que empezarán por "dev-" seguido por numeros generados por la red. Guárdelo, lo necesitará si quiere probar los métodos del contrato inteligente.
+6. Por último, si queremos ejecutar los tests desarrollados, podemos hacerlo ejecutando ```yarn test```
    
 ## Llamadas al Contrato 
 ---
 Algunos de los metodos que podemos ejecutar son los siguientes
-- Cargar un libro 
+- REGISTAR PRODUCTO
   ```bash
-  near call dev-<tu numero de contrato> uploadBook '{"name": "Name of the Book", "description": "Description of the Book", "image": "This is the image of the Book", "file": "File of the Book", "author": "Author of the Book", "language": "english", "publisher": "publisher of the book"}' --accountId <tu_user.testnet>
+  near call dev-<tu numero de contrato> Registrar_producto '{"id_producto": "id ","nombre": "nombre del producto" "descripcion": "Description del prodcuto", "existencias": "numero de existencias del producto", "caducidad": "fecha de caduccidad", "marca": "nombre de la marac del producto", "precio": "precio del producto", "ventas": "numero de ventas del producto"}' --accountId <tu_user.testnet>
   ```
-- Buscar todos los libros 
+- BUSCAR PRODUCTOS
   ```bash
-  near call dev-<tu numero de contrato> getBooks --accountId <tu_user.testnet>
+  near call dev-<tu numero de contrato> Buscar_productos --accountId <tu_user.testnet>
   ```
-- Buscar un libro en especifico
+- ACTUALIZAR PRODUCTOS
 ```bash
-  near call dev-<tu numero de contrato> getBook '{"bookIndex": i32}' --accountId <tu_user.testnet>
+  near call dev-<tu numero de contrato> Actualiza_productos '{"id_producto": "id ","nombre": "nombre del producto" "descripcion": "Description del prodcuto", "existencias": "numero de existencias del producto", "caducidad": "fecha de caduccidad", "marca": "nombre de la marac del producto", "precio": "precio del producto", "ventas": "numero de ventas del producto"}' --accountId <tu_user.testnet>
   ```
-- Eliminar un libro
+- ELIMINAR PRODUCTOS
 ```bash
-  near call dev-<tu numero de contrato> deleteBook '{"bookIndex": i32}' --accountId <tu_user.testnet>
+  near call dev-<tu numero de contrato> Eliminar-productos '{"id_productos": "id"}' --accountId <tu_user.testnet>
   ```
-- Donar al proyecto
+- REGISTRAR CLIENTES
 ```bash
-  near call dev<tu numero de contrato> donateToProject --accountId <tu_user.testnet> --amount i32
+  near call dev<tu numero de contrato>  Registrar_cliente '{"id_clientes": " ID","nombre": "nombre del cliente", "apellidos": "apellidos del cliente","direccion":"direccion del cliente", "telefono": "numero de telefono", "wallet": "nombre.testnet"}' --accountId <tu_user.testnet>
   ```
-- Buscar los contribuyentes 
+  - BUSCAR CLIENTES
   ```bash
-  near call dev-<tu numero de contrato> getContributors --accountId <tu_user.testnet>
+near call dev-<tu numero de contrato> Buscar_cliente --accountId <tu_user.testnet>
     ```
-- Buscar un contribuyente por nombre de usuario 
-  ```bash
-  near call dev-<tu numero de contrato> findContributor '{"contributorUser": "usuario.testnet"}' --accountId <tu_user.testnet>
-    ```
-
+ - ACTUALIZAR CLIENTE
+```bash
+  near call dev-<tu numero de contrato> Actualiza_cliente '{"id_clientes": " ID","nombre": "nombre del cliente", "apellidos": "apellidos del cliente","direccion":"direccion del cliente", "telefono": "numero de telefono", "wallet": "nombre.testnet"}' --accountId <tu_user.testnet>
+  ```
+- ELIMINAR CLIENTE
+```bash
+  near call dev-<tu numero de contrato> Eliminar_cliente '{"id_cliente": "id"}' --accountId <tu_user.testnet>
+  ```
+- IDENTIFICAR CLIENTE
+```bash
+  near call dev-<tu numero de contrato> Identificar_cliente '{"id_productos": "id"}' --accountId <tu_user.testnet>
+  ```
+  - CANCELAR PRODUCTO
+```bash
+  near call dev-<tu numero de contrato> Cancelar_producto '{"id_productos": "id"}' --accountId <tu_user.testnet>
+  ```
 ## Mockup de Figma CAFETERIA
-Abre este [enlace](https://www.figma.com/file/3NKKf6JKrRXON8Q7yoFX1N/OpenBooks?node-id=0%3A1) para abrir la propuesta de diseño de la Dapp.
+Abre este [enlace](https://www.figma.com/file/PI0jAosv38tTvCDIvH7GYK/CAFETERIA-MAGNATE?type=design&node-id=0%3A1&t=Odslw1iufsTykLUq-1) para abrir la propuesta de diseño de la Dapp.
 
 ## Authors
-- [Sebastian Vivas](https://github.com/sebasvivas1)
-- [Jose Alfredo Roman Cruz](https://github.com/josealfredo79)
+- [Magaly Nicolas Sanchez](https://github.com/magaly1311)
+- [Abigail Coronel Santiago](https://github.com/abicornel)
+- [Judith Reyna Cruz Santiago](https://github.com/judithrcs)
+- [Maria Jose Lopez Leyva](https://github.com/mariajose-1007)
